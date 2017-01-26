@@ -1,0 +1,122 @@
+@import url(https://fonts.googleapis.com/css?family=Cinzel);
+
+* {
+    font-family: 'Cinzel', sans-serif;
+    overflow: hidden;
+}
+
+body {
+    background-color: rgba(20, 15, 10, 1);
+    background: linear-gradient(to top, rgba(20, 15, 10, 0.4), rgba(20, 15, 10, 0.4)),
+    url("../img/kevin-bacon2.jpg") top center/cover fixed;
+}
+
+#splash {
+    height: 100vh;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../img/kevinbacon.jpg") top center/cover fixed;
+}
+
+.heading {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50vh;
+    width: 50vw;
+}
+
+#splash * {
+    color: white;
+}
+
+
+.scrollButton {
+    animation-delay: 1s;
+    border: 2px solid white;
+    display: inline-block;
+    margin-top: 5vh;
+    transition: all 0.7s;
+}
+
+.scrollButton p {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+}
+
+.scrollButton:hover {
+    cursor: pointer;
+    opacity: 0.5 !important;
+}
+
+#homeContent {
+    height: 100vh;
+    background-color: rgba(20, 15, 10, 0.8);
+}
+
+#homeContent h2 {
+    padding-top: 8vh;
+    color: white;
+    padding-bottom: 3vh;
+}
+
+#homeContent img {
+    margin-bottom: 5vh;
+}
+
+#homeContent a,
+#homeContent p {
+    color: white;
+}
+
+#homeContent p,
+input[type=text] {
+    margin-bottom: 5vh;
+}
+
+.forms {
+    animation-delay: 1s;
+}
+
+input[type=text] {
+    display: block;
+    width: 40%;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent;
+    border: none;
+    transition: all 0.7s;
+}
+
+input[type=submit] {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    transition: all 0.5s;
+}
+
+input[type=submit]:hover {
+    border: none;
+}
+
+input[type=text]:focus {
+    border-bottom: 1px solid white;
+    width: 90%;
+}
+
+/* Bootstrap Overwrites */
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li:hover > a {
+    color: rgba(20, 15, 10, 1) !important;
+}
+
+.nav-tabs > li > a {
+    border-radius: 0;
+}
+
+.form-control:focus {
+    border: none;
+    border-color: none;
+}
