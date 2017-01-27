@@ -39,11 +39,15 @@
             <div class="row forms">
                 <div class="col-xs-12 col-sm-offset-3 col-sm-6">
 
+                    <!--
+
                     <div class="row">
                         <div class="col-xs-offset-3 col-xs-6">
                             <img class="img-responsive img-circle" src="img/kevinbacon3.jpg">
                         </div>
                     </div>
+
+                    -->
 
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#1degree"> {{ tab1 }} </a></li>
@@ -53,18 +57,32 @@
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="1degree">
                             <p> {{ form1desc }} </p>
-                            <form action="php/1degree.php">
-                                <input class="text-center" type="text" name="actor" placeholder="Enter First and Last name">
-                                <input type="Submit" value="Search">
+                            <form>
+                                <input
+                                class="text-center"
+                                type="text"
+                                v-model.trim="name"
+                                @input="callAjax('php/test.php')"
+                                @keypress="preventSubmission"
+                                :placeholder="formprompt">
                             </form>
                         </div>
                         <div class="tab-pane fade in" id="2degree">
                             <p> {{ form2desc }} </p>
-                            <form action="php/2degree.php">
-                                <input class="text-center" type="text" name="actor" placeholder="Enter First and Last name">
-                                <input type="Submit" value="Search">
+                            <form>
+                                <input
+                                class="text-center"
+                                type="text"
+                                v-model.trim="name"
+                                @input="callAjax('php/2degree.php')"
+                                @keypress="preventSubmission"
+                                :placeholder="formprompt">
                             </form>
                         </div>
+                    </div>
+
+                    <div class="results">
+                        <!-- Results displayed here -->
                     </div>
 
                 </div>
