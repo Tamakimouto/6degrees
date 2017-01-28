@@ -40,8 +40,6 @@ $(function() {
                     var first = this.name.split(" ")[0] + " " + this.name.split(" ")[1];
                     var last = this.name.split(" ")[2];
                     home.ajax(first, last, filename);
-                } else {
-                    $(".results").html("");
                 }
             },
             ajax: function(fname, lname, filename) {

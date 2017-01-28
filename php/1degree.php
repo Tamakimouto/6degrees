@@ -1,6 +1,6 @@
 <?php
 
-include "common.php";
+include "Common.php";
 
 get1Degree();
 
