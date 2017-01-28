@@ -83,7 +83,7 @@
 
                     <div class="results">
                         <!-- Results displayed here -->
-                        <div v-if="$('#1').hasClass('active')">
+                        <div v-if="mode == 1">
                             <table class="table table-striped table-responsive">
                                 <thead>
                                     <tr>
