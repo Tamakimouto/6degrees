@@ -1,10 +1,6 @@
 <?php
 
-/* Connection Configs */
-$user = "root";
-$pass = "10068366";
-$dbname = "kevinbacondatabase";
-$host = "localhost";
+
 
 /**
  * connectDB
@@ -17,6 +13,12 @@ $host = "localhost";
  * @throws  PDOException
  */
 function connectDB() {
+
+    /* Connection Configs */
+    $user = "root";
+    $pass = "10068366";
+    $dbname = "kevinbacondatabase";
+    $host = "localhost";
 
     try {
 

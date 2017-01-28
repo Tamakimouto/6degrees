@@ -28,7 +28,7 @@ $(function() {
             form2desc: "Search for all films within 2 degrees with both a given actor and Kevin Bacon.",
             formprompt: "Enter First and Last name",
             name: "",
-            result: ""
+            result: []
         },
         methods: {
             callAjax: function(filename) {
@@ -53,7 +53,10 @@ $(function() {
                     },
                     success: function(res) {
                         if (res["from"] == "1degree" || res["from"] == "2degree") {
-                            this.result = parseJSON(res["data"]);
+                            res["data"].forEach(function(row) {
+                                home.result.push(row)
+                            });
+                            console.log(this.result);
                         }
                     }
                 });

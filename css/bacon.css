@@ -104,6 +104,29 @@ input[type=text]:focus {
     width: 90%;
 }
 
+th {
+    text-align: center;
+    color: white;
+}
+
+thead {
+    width: 100%;
+}
+
+tbody {
+    overflow-y: auto;
+    max-height: 40vh;
+    width: 100%;
+}
+
+.table-affix thead,
+.table-affix tbody,
+.table-affix tr,
+.table-affix td,
+.table-affix th {
+    display: block;
+}
+
 /* Bootstrap Overwrites */
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
@@ -119,4 +142,8 @@ input[type=text]:focus {
 .form-control:focus {
     border: none;
     border-color: none;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n) td {
+    color: white;
 }

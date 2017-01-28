@@ -8,8 +8,8 @@ function get1Degree() {
 
     $db = connectDB();
 
-    $fname = $_POST("firstName");
-    $lname = $_POST("lastName");
+    $fname = $_POST["firstName"];
+    $lname = $_POST["lastName"];
 
     $query = "(SELECT *  FROM
         (SELECT * FROM actors as a
@@ -26,7 +26,7 @@ function get1Degree() {
     $result = array("from" => "1degree", "data" => array());
 
     foreach($prep as $row) {
-        $result[data].push(array(
+        array_push($result["data"], array(
             "firstName" => $row["first_name"],
             "lastName" => $row["last_name"],
             "actorID" => $row["actor_id"],

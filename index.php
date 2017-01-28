@@ -84,23 +84,23 @@
                     <div class="results">
                         <!-- Results displayed here -->
                         <div v-if="mode == 1">
-                            <table class="table table-striped table-responsive">
+                            <table class="table table-striped table-affix table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>Actor Id</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Movie ID</th>
-                                        <th>Role</th>
+                                        <th class="col-xs-2">Actor Id</th>
+                                        <th class="col-xs-2">First Name</th>
+                                        <th class="col-xs-2">Last Name</th>
+                                        <th class="col-xs-2">Movie ID</th>
+                                        <th class="col-xs-2">Role</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="row in result">
-                                        <td> {{ row.actorID }} </td>
-                                        <td> {{ row.firstName }} </td>
-                                        <td> {{ row.lastName }} </td>
-                                        <td> {{ row.movieID }} </td>
-                                        <td> {{ row.role }} </td>
+                                        <td class="col-xs-2"> {{ row.actorID }} </td>
+                                        <td class="col-xs-2"> {{ row.firstName }} </td>
+                                        <td class="col-xs-2"> {{ row.lastName }} </td>
+                                        <td class="col-xs-2"> {{ row.movieID }} </td>
+                                        <td class="col-xs-2"> {{ row.role }} </td>
                                     </tr>
                                 </tbody>
                             </table>
