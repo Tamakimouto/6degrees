@@ -1,41 +1,51 @@
 <?php
 
-//connectToDatabase();
+/* Connection Configs */
+$user = "root";
+$pass = "10068366";
+$dbname = "kevinbacondatabase";
+$host = "localhost";
 
 /**
+ * connectDB
  *
+ * Connects to database with the set config.
+ *
+ * @access  public
+ * @return  PDO     A PDO instance representing our current db connection.
+ *
+ * @throws  PDOException
  */
-function connectToDatabase(){
+function connectDB() {
 
-    try{
+    try {
 
-        $connection = "mysql:host=localhost;dbname=kevinbacondatabase";
-        $user = "generaluser";
-        $password = "password";
-        $db = new PDO($connection,$user,$password);
+        $source = "mysql:host=$host;dbname=$dbname";
+        $db = new PDO($source, $user, $pass);
 
+        return $db;
 
-        //Test Query
-        foreach($db->query('SELECT * FROM actors WHERE 1') as $row) {
-            echo $row['first_name'] . "<br/>";
-        }
-
-
-        //Close Connection
-        $db = null;
-
-    }catch(PDOException $e){
+    } catch (PDOException $e) {
 
         echo "Connection Error Message: " . $e->getMessage() . "<br/>";
         die();
     }
+}
 
 
+/**
+ * closeDB
+ *
+ * Closes the database connection given as param.
+ *
+ * @access  public
+ * @param   PDO     $db     A PDO instance representing the connection
+ *                          to be closed.
+ *
+ * @throws  PDOException
+ */
+function closeDB($db) {
+    $db = null;
+}
 
-}//Connect to Database
-
-
-
-
-
-
+?>

@@ -26,7 +26,8 @@ $(function() {
             form1desc: "Search for all films with both a given actor and Kevin Bacon.",
             form2desc: "Search for all films within 2 degrees with both a given actor and Kevin Bacon.",
             formprompt: "Enter First and Last name",
-            name: ""
+            name: "",
+            result: ""
         },
         methods: {
             callAjax: function(filename) {
@@ -52,7 +53,27 @@ $(function() {
                         lastName: lname
                     },
                     success: function(res) {
-                        $(".results").html(res["firstName"] + " " + res["lastName"]);
+                        if (res["from"] == "1degree" || res["from"] == "2degree") {
+                            this.result = parseJSON(res["data"]);
+                        /*
+                            $(".results").html(
+                                    "<table class='table table-striped table-responsive'>" +
+                                    "<thead> <tr>" +
+                                    "<th>Actor Id</th> <th>First Name</th> <th>Last Name</th> <th>Movie ID</th> <th>Role</th>" +
+                                    "</tr> </thead>" +
+                                    "<tbody>" +
+                                    "<tr v-for='row in result'>" +
+                                    "<td> {{ row.actorID }} </td>" +
+                                    "<td> {{ row.firstName }} </td>" +
+                                    "<td> {{ row.lastName }} </td>" +
+                                    "<td> {{ row.movieID }} </td>" +
+                                    "<td> {{ row.role }} </td>" +
+                                    "</tr>" +
+                                    "</tbody>" +
+                                    "</table>"
+                                    );
+                         **/
+                        }
                     }
                 });
             },

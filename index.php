@@ -50,8 +50,8 @@
                     -->
 
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#1degree"> {{ tab1 }} </a></li>
-                        <li><a data-toggle="tab" href="#2degree"> {{ tab2 }} </a></li>
+                        <li class="active" id="1"><a data-toggle="tab" href="#1degree"> {{ tab1 }} </a></li>
+                        <li id="1"><a data-toggle="tab" href="#2degree"> {{ tab2 }} </a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -83,6 +83,28 @@
 
                     <div class="results">
                         <!-- Results displayed here -->
+                        <div v-if="$('#1').hasClass('active')">
+                            <table class="table table-striped table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Actor Id</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Movie ID</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="row in result">
+                                        <td> {{ row.actorID }} </td>
+                                        <td> {{ row.firstName }} </td>
+                                        <td> {{ row.lastName }} </td>
+                                        <td> {{ row.movieID }} </td>
+                                        <td> {{ row.role }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                 </div>
