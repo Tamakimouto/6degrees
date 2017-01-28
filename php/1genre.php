@@ -1,11 +1,10 @@
 <?php
 
-//connectToDatabase();
+include "common.php";
 
-/**
- *
- */
-function connectToDatabase(){
+get1genre();
+
+function get1genre(){
 
     try{
 
@@ -15,9 +14,15 @@ function connectToDatabase(){
         $db = new PDO($connection,$user,$password);
 
 
+
+        $query = "SELECT genre,count(*) as MovieCount FROM movies_genres group by genre ORDER BY MovieCount DESC ";
+
+        $prep = $db->prepare("$query");
+        $prep->execute();
+
         //Test Query
-        foreach($db->query('SELECT * FROM actors WHERE 1') as $row) {
-            echo $row['first_name'] . "<br/>";
+        foreach($prep as $row) {
+            echo $row['genre'] . " " . $row['MovieCount'] . "<br/>";
         }
 
 
@@ -32,10 +37,4 @@ function connectToDatabase(){
 
 
 
-}//Connect to Database
-
-
-
-
-
-
+}//Get Genre

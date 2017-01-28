@@ -62,7 +62,7 @@
                                 class="text-center"
                                 type="text"
                                 v-model.trim="name"
-                                @input="callAjax('php/test.php')"
+                                @input="callAjax('php/1degree.php')"
                                 @keypress="preventSubmission"
                                 :placeholder="formprompt">
                             </form>
