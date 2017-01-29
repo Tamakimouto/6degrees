@@ -20,7 +20,7 @@ function get2Degree() {
     $prep->execute();
 
     $result = array("from" => "2degree", "data" => array());
-/*
+
     foreach($prep as $row) {
         array_push($result["data"], array(
             "firstName" => $row["first_name"],
@@ -29,7 +29,7 @@ function get2Degree() {
             "movieID" => $row["movie_id"],
             "role" => $row["role"]
         ));
-    }*/
+    }
 
     header("Content-Type: application/json");
     echo json_encode($result);

@@ -1,4 +1,5 @@
 <?php
+
 include "Common.php";
 
 get2Genre();
@@ -15,14 +16,21 @@ function get2Genre() {
     $prep->bindParam(1, $genre);
     $prep->execute();
 
+    $result = array("from" => "2genre", "data" => array());
 
-/*
-    foreach($prep as $row) {   }
-*/
+    foreach($prep as $row) {
+        array_push($result["data"], array(
+            "firstName" => $row["first_name"],
+            "lastName" => $row["last_name"],
+            "count" => /* !!!!!!!!!!!! The Count !!!!!!!!!!! */
+        ));
+    }
 
     header("Content-Type: application/json");
-
+    echo json_encode($result);
 
     closeDB($db);
 
 } //Get 2 Genre
+
+?>
