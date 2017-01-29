@@ -50,8 +50,11 @@
                     -->
 
                     <ul class="nav nav-tabs">
-                        <li class="active" id="1"><a data-toggle="tab" href="#1degree"> {{ tab1 }} </a></li>
-                        <li id="1"><a data-toggle="tab" href="#2degree"> {{ tab2 }} </a></li>
+                        <li class="active" @click="updateMode(1)"><a data-toggle="tab" href="#1degree"> {{ tab1 }} </a></li>
+                        <li @click="updateMode(1)"><a data-toggle="tab" href="#2degree"> {{ tab2 }} </a></li>
+                        <li @click="autoCallAjax(2, 'php/1genre.php')"><a data-toggle="tab" href="#1genre"> {{ tab3 }} </a></li>
+                        <li @click="updateMode(3)"><a data-toggle="tab" href="#2genre"> {{ tab4 }} </a></li>
+                        <li @click="autoCallAjax(4, 'php/director.php')"><a data-toggle="tab" href="#directs"> {{ tab5 }} </a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -79,6 +82,24 @@
                                 :placeholder="formprompt">
                             </form>
                         </div>
+                        <div class="tab-pane fade in" id="1genre">
+                            <p> {{ form3desc }} </p>
+                        </div>
+                        <div class="tab-pane fade in" id="2genre">
+                            <p> {{ form4desc }} </p>
+                            <form>
+                                <input
+                                class="text-center"
+                                type="text"
+                                v-model.trim="genre"
+                                @input="search2Genre"
+                                @keypress="preventSubmission"
+                                :placeholder="formprompt2">
+                            </form>
+                        </div>
+                        <div class="tab-pane fade in" id="directs">
+                            <p> {{ form5desc }} </p>
+                        </div>
                     </div>
 
                     <div class="results">
@@ -88,8 +109,8 @@
                                 <thead>
                                     <tr>
                                         <th class="col-xs-2">Actor Id</th>
-                                        <th class="col-xs-2">First Name</th>
-                                        <th class="col-xs-2">Last Name</th>
+                                        <th class="col-xs-3">First Name</th>
+                                        <th class="col-xs-3">Last Name</th>
                                         <th class="col-xs-2">Movie ID</th>
                                         <th class="col-xs-2">Role</th>
                                     </tr>
@@ -97,15 +118,67 @@
                                 <tbody>
                                     <tr v-for="row in result">
                                         <td class="col-xs-2"> {{ row.actorID }} </td>
-                                        <td class="col-xs-2"> {{ row.firstName }} </td>
-                                        <td class="col-xs-2"> {{ row.lastName }} </td>
+                                        <td class="col-xs-3"> {{ row.firstName }} </td>
+                                        <td class="col-xs-3"> {{ row.lastName }} </td>
                                         <td class="col-xs-2"> {{ row.movieID }} </td>
                                         <td class="col-xs-2"> {{ row.role }} </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                        <div v-else-if="mode == 2">
+                            <table class="table table-striped table-affix table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class="col-xs-8">Genre</th>
+                                        <th class="col-xs-4">Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="row in result">
+                                        <td class="col-xs-8"> {{ row.genre }} </td>
+                                        <td class="col-xs-4"> {{ row.count }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div v-else-if="mode == 3">
+                            <table class="table table-striped table-affix table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class="col-xs-5">First Name</th>
+                                        <th class="col-xs-5">Last Name</th>
+                                        <th class="col-xs-2">Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="row in result">
+                                        <td class="col-xs-5"> {{ row.firstName }} </td>
+                                        <td class="col-xs-5"> {{ row.lastName }} </td>
+                                        <td class="col-xs-2"> {{ row.count }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div v-else-if="mode == 4">
+                            <table class="table table-striped table-affix table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class="col-xs-2">Actor Id</th>
+                                        <th class="col-xs-5">First Name</th>
+                                        <th class="col-xs-5">Last Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="row in result">
+                                        <td class="col-xs-2"> {{ row.actorID }} </td>
+                                        <td class="col-xs-5"> {{ row.firstName }} </td>
+                                        <td class="col-xs-5"> {{ row.lastName }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> <!-- End Results -->
 
                 </div>
             </div>

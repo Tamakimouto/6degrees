@@ -23,11 +23,19 @@ $(function() {
             homeHead: "Two Degrees of Kevin Bacon",
             tab1: "1st Degree",
             tab2: "2nd Degree",
+            tab3: "#1 Genre",
+            tab4: "#1 Actor",
+            tab5: "Directors",
             mode: 1,
             form1desc: "Search for all films with both a given actor and Kevin Bacon.",
             form2desc: "Search for all films within 2 degrees with both a given actor and Kevin Bacon.",
+            form3desc: "Here is the genre with the most amount of movies, has nothing to do with Kevin Bacon.",
+            form4desc: "Search for the actor who has played in the most movies of a certain genre. Could be Kevin Bacon.",
+            form5desc: "All actors who have also directed movies, is Kevin Bacon on the list?",
             formprompt: "Enter First and Last name",
+            formprompt2: "Enter a Genre",
             name: "",
+            genre: "",
             result: []
         },
         methods: {
@@ -51,19 +59,43 @@ $(function() {
                         firstName: fname,
                         lastName: lname
                     },
-                    success: function(res) {
-                        if (res["from"] == "1degree" || res["from"] == "2degree") {
-                            res["data"].forEach(function(row) {
-                                home.result.push(row)
-                            });
-                            console.log(this.result);
-                        }
-                    }
+                    success: function(res) { home.updateView(res); }
                 });
             },
             preventSubmission: function(key) {
                 if (key.which == 13 )
                     key.preventDefault();
+            },
+            autoCallAjax: function(md, filename) {
+                this.mode = md;
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: filename,
+                    success: function(res) { home.updateView(res); }
+                });
+            },
+            search2Genre: function() {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "php/2genre.php",
+                    data: {
+                        genre: this.genre
+                    },
+                    success: function(res) { home.updateView(res); }
+                });
+            },
+            updateMode: function(md) {
+                this.mode = md;
+                this.result = [];
+                this.result.pop();
+            },
+            updateView: function(res) {
+                home.result = [];
+                res["data"].forEach(function(row) {
+                    home.result.push(row);
+                });
             }
         }
     });

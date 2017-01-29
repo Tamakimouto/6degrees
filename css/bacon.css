@@ -124,7 +124,12 @@ tbody {
 .table-affix tr,
 .table-affix td,
 .table-affix th {
-    display: block;
+    display: block !important;
+}
+
+.table-affix tbody td,
+.table-affix thead tr th {
+    float: left;
 }
 
 /* Bootstrap Overwrites */
