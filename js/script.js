@@ -48,7 +48,8 @@ $(function() {
                     var first = this.name.split(" ")[0] + " " + this.name.split(" ")[1];
                     var last = this.name.split(" ")[2];
                     home.ajax(first, last, filename);
-                }
+                } else
+                    home.clearView();
             },
             ajax: function(fname, lname, filename) {
                 $.ajax({
@@ -87,16 +88,18 @@ $(function() {
                 });
             },
             updateMode: function(md) {
-                this.mode = md;
-                this.result = [];
-                this.result.pop();
+                home.mode = md;
+                home.result = [];
+                home.result.pop(); /* <-- This triggers the view update - It's important */
             },
             updateView: function(res) {
                 home.result = [];
+                home.result.pop(); /* <-- This triggers the view update - It's important */
                 res["data"].forEach(function(row) {
                     home.result.push(row);
                 });
-            }
+            },
+            clearView: function() { home.result = []; home.result.pop(); }
         }
     });
 
