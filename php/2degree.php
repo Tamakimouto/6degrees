@@ -1,49 +1,41 @@
 <?php
-include "common.php";
 
-GET2DEGREE();
+include "Common.php";
 
-function get2Degree(){
+get2Degree();
 
-    try{
+/** Gets 2nd Degree of Separation from Kevin Bacon */
+function get2Degree() {
 
-        $connection = "mysql:host=localhost;dbname=kevinbacondatabase";
-        $user = "generaluser";
-        $password = "password";
-        $db = new PDO($connection,$user,$password);
+    $db = connectDB();
 
-        $fname = "Tom";
-        $lname = "Cruise";
+    $fname = $_POST["firstName"];
+    $lname = $_POST["lastName"];
 
+    $query = " ";
 
-        $query = "(SELECT *  FROM
-	              (SELECT * FROM actors as a
-	              INNER JOIN roles as r
-                  ON a.id = r.actor_id
-                  WHERE (first_name = \"Kevin\" AND last_name = \"Bacon\")
-                  OR (first_name = ? AND last_name = ? ))as t1)";
+    $prep = $db->prepare("$query");
+    $prep->bindParam(1, $fname);
+    $prep->bindParam(2, $lname);
+    $prep->execute();
 
-        $prep = $db->prepare("$query");
-        $prep->bindParam(1, $fname);
-        $prep->bindParam(2, $lname);
-        $prep->execute();
+    $result = array("from" => "2degree", "data" => array());
+/*
+    foreach($prep as $row) {
+        array_push($result["data"], array(
+            "firstName" => $row["first_name"],
+            "lastName" => $row["last_name"],
+            "actorID" => $row["actor_id"],
+            "movieID" => $row["movie_id"],
+            "role" => $row["role"]
+        ));
+    }*/
 
-        //Test Query
-        foreach($prep as $row) {
-            echo $row['first_name'] . " " . $row['last_name'] .
-                " " . $row['actor_id'] . " " . $row['movie_id'] . " ". $row['role'] . "<br/>";
-        }
+    header("Content-Type: application/json");
+    echo json_encode($result);
 
+    closeDB($db);
 
-        //Close Connection
-        $db = null;
+} //Get 2 Degree
 
-    }catch(PDOException $e){
-
-        echo "Connection Error Message: " . $e->getMessage() . "<br/>";
-        die();
-    }
-
-
-
-}//Get 1 Degree
+?>

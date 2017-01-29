@@ -4,6 +4,7 @@ include "Common.php";
 
 get1Degree();
 
+/** Gets 1st Degree of Separation from Kevin Bacon */
 function get1Degree() {
 
     $db = connectDB();
@@ -12,11 +13,11 @@ function get1Degree() {
     $lname = $_POST["lastName"];
 
     $query = "(SELECT *  FROM
-        (SELECT * FROM actors as a
-        INNER JOIN roles as r
-        ON a.id = r.actor_id
-        WHERE (first_name = \"Kevin\" AND last_name = \"Bacon\")
-        OR (first_name = ? AND last_name = ? ))as t1)";
+                (SELECT * FROM actors as a
+                    INNER JOIN roles as r
+                    ON a.id = r.actor_id
+                    WHERE (first_name = \"Kevin\" AND last_name = \"Bacon\")
+                    OR (first_name = ? AND last_name = ? ))as t1)";
 
     $prep = $db->prepare("$query");
     $prep->bindParam(1, $fname);

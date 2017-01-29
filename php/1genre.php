@@ -1,40 +1,29 @@
 <?php
 
-include "common.php";
+include "Common.php";
 
-get1genre();
-
-function get1genre(){
-
-    try{
-
-        $connection = "mysql:host=localhost;dbname=kevinbacondatabase";
-        $user = "generaluser";
-        $password = "password";
-        $db = new PDO($connection,$user,$password);
+get1Genre();
 
 
+/** Gets Genre with the Largest Movie Count */
+function get1Genre() {
 
-        $query = "SELECT genre,count(*) as MovieCount FROM movies_genres group by genre ORDER BY MovieCount DESC ";
-
-        $prep = $db->prepare("$query");
-        $prep->execute();
-
-        //Test Query
-        foreach($prep as $row) {
-            echo $row['genre'] . " " . $row['MovieCount'] . "<br/>";
-        }
+    $db = connectDB();
 
 
-        //Close Connection
-        $db = null;
+    $query = "SELECT genre,count(*) as MovieCount FROM movies_genres group by genre ORDER BY MovieCount DESC ";
 
-    }catch(PDOException $e){
+    $prep = $db->prepare("$query");
 
-        echo "Connection Error Message: " . $e->getMessage() . "<br/>";
-        die();
+    $prep->execute();
+
+    foreach($prep as $row) {
+        echo $row['genre'] . " " . $row['MovieCount'] . "<br/>";
     }
 
 
+    header("Content-Type: application/json");
 
-}//Get Genre
+    closeDB($db);
+
+} //Get 1 Genre
