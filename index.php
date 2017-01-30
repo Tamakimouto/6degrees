@@ -41,7 +41,7 @@
             <div class="row forms">
                 <div class="col-xs-12 col-sm-offset-3 col-sm-6">
 
-                    <!-- Optional Profile Picture ---->
+                    <!-- Optional Profile Picture
 
                     <div class="row">
                         <div class="col-xs-offset-3 col-xs-6">
