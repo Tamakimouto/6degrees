@@ -34,7 +34,35 @@ function get2Degree() {
     $fname = $_POST["firstName"];
     $lname = $_POST["lastName"];
 
-    $query = " ";
+    $query = ("SELECT * FROM (    
+        SELECT *
+        FROM actors as a
+        INNER JOIN roles as r
+        ON a.id = r.actor_id
+        WHERE NOT actor_id IN (
+            SELECT actor_id from roles
+            WHERE movie_id IN
+            (SELECT movie_id
+            FROM actors as a
+            INNER JOIN roles as r
+            ON a.id = r.actor_id
+            WHERE first_name='Kevin' AND last_name='Bacon')
+        ))as t1
+
+        WHERE movie_id IN (SELECT movie_id
+        FROM actors as a
+        INNER JOIN roles as r
+        ON a.id = r.actor_id
+        WHERE actor_id IN (
+            SELECT actor_id from roles
+            WHERE movie_id IN
+            (SELECT movie_id
+            FROM actors as a
+            INNER JOIN roles as r
+            ON a.id = r.actor_id
+            WHERE first_name='Kevin' AND last_name='Bacon')
+        ))
+    ");
 
     $prep = $db->prepare("$query");
     $prep->bindParam(1, $fname);
