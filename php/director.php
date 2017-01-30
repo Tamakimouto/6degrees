@@ -1,9 +1,33 @@
 <?php
+
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * director.php
+ *
+ * Finds actors who also directed a movie. To be used as an Ajax call
+ * sending with POST variables as needed.
+ *
+ * PHP 5
+ *
+ * @category    Project1
+ * @author      Anthony Zheng <Anthony@anthonyzing.me>
+ * @author      Terrence Butler <tbbutle@uga.edu>
+ * @author      Nghia Le <nghiathanle.25@gmail.com>
+ * @since       Created January 22, 2017
+ */
+
 include "Common.php";
 
 getDirectors();
 
-/** Finds actors who also directed a movie */
+/**
+ * getDirectors
+ *
+ * Connects to database defined in Common.php and runs query to
+ * get actors who are also directors.
+ */
+
 function getDirectors() {
 
     $db = connectDB();

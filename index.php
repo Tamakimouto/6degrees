@@ -7,6 +7,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Anthony Zheng">
+        <meta name="description" content="The best Kevin Bacon project ever.">
+        <meta name="keywords" content="Kevin Bacon, 6 Degrees of Kevin Bacon, Anthony Zheng, Nghia Le, Terrence Butler">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <link rel="stylesheet" href="css/bacon.css">
@@ -39,7 +41,7 @@
             <div class="row forms">
                 <div class="col-xs-12 col-sm-offset-3 col-sm-6">
 
-                    <!--
+                    <!-- Optional Profile Picture ---->
 
                     <div class="row">
                         <div class="col-xs-offset-3 col-xs-6">
