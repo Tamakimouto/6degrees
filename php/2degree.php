@@ -31,10 +31,8 @@ function get2Degree() {
 
     $db = connectDB();
 
-    $fname = $_POST["firstName"];
-    $lname = $_POST["lastName"];
-
-    $query = ("SELECT * FROM (    
+    $query = ("
+        SELECT * FROM (
         SELECT *
         FROM actors as a
         INNER JOIN roles as r
@@ -65,8 +63,6 @@ function get2Degree() {
     ");
 
     $prep = $db->prepare("$query");
-    $prep->bindParam(1, $fname);
-    $prep->bindParam(2, $lname);
     $prep->execute();
 
     $result = array("from" => "2degree", "data" => array());

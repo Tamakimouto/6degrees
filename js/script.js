@@ -28,7 +28,7 @@ $(function() {
             tab5: "Directors",
             mode: 1,
             form1desc: "Search for all films with both a given actor and Kevin Bacon.",
-            form2desc: "Search for all films within 2 degrees with both a given actor and Kevin Bacon.",
+            form2desc: "All actors within 2 degrees of Kevin Bacon.",
             form3desc: "Here is the genre with the most amount of movies, has nothing to do with Kevin Bacon.",
             form4desc: "Search for the actor who has played in the most movies of a certain genre. Could be Kevin Bacon.",
             form5desc: "All actors who have also directed movies, is Kevin Bacon on the list?",
@@ -68,12 +68,16 @@ $(function() {
                     key.preventDefault();
             },
             autoCallAjax: function(md, filename) {
+                console.log("calling" + filename);
                 this.mode = md;
                 $.ajax({
                     type: "POST",
                     dataType: "json",
                     url: filename,
-                    success: function(res) { home.updateView(res); }
+                    success: function(res) { home.updateView(res); },
+                    error: function(req, textStatus, err) {
+                        console.log(textStatus + ": " + err);
+                    }
                 });
             },
             search2Genre: function() {
@@ -98,6 +102,7 @@ $(function() {
                 res["data"].forEach(function(row) {
                     home.result.push(row);
                 });
+                console.log(home.result);
             },
             clearView: function() { home.result = []; home.result.pop(); }
         }

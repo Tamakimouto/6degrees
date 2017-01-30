@@ -12,3 +12,7 @@ Because this site uses ajax updates, there is no need to run any other page.
 
 ## Contributers
 Anthony Zheng, Terrence Butler, Nghia Le
+
+### Extra Note
+Look I know this is a bit late, but seeing the effort that was put into this,
+please be lenient.

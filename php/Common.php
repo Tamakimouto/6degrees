@@ -37,7 +37,8 @@ function connectDB() {
     try {
 
         $source = "mysql:host=$host;dbname=$dbname";
-        $db = new PDO($source, $user, $pass);
+        $db = new PDO($source, $user, $pass, array("charset" => "utf8"));
+        $db->query("SET CHARACTER SET utf8");
 
         return $db;
 
