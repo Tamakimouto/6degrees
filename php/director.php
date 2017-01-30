@@ -8,7 +8,13 @@ function getDirectors() {
 
     $db = connectDB();
 
-    $query = " ";
+    $query = ("
+        SELECT a.first_name, a.last_name, a.id
+        FROM actors a
+        INNER JOIN directors
+        WHERE a.first_name = directors.first_name
+        AND a.last_name = directors.last_name
+    ");
 
     $prep = $db->prepare("$query");
     $prep->execute();
@@ -19,7 +25,7 @@ function getDirectors() {
         array_push($result["data"], array(
             "firstName" => $row["first_name"],
             "lastName" => $row["last_name"],
-            "actorID" => $row["actor_id"]
+            "actorID" => $row["id"]
         ));
     }
 

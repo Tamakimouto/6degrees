@@ -9,8 +9,12 @@ function get1Genre() {
 
     $db = connectDB();
 
-    $query = "SELECT genre, count(*) as MovieCount FROM movies_genres
-        group by genre ORDER BY MovieCount DESC";
+    $query = ("
+        SELECT g.genre, COUNT(g.movie_id) as MovieCount FROM movies_genres g
+        GROUP BY g.genre HAVING COUNT(g.movie_id) =
+            (SELECT COUNT(g2.movie_id) tc FROM movies_genres g2
+            GROUP BY g2.genre ORDER BY tc DESC LIMIT 1)
+    ");
 
     $prep = $db->prepare("$query");
     $prep->execute();

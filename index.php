@@ -108,20 +108,18 @@
                             <table class="table table-striped table-affix table-responsive">
                                 <thead>
                                     <tr>
-                                        <th class="col-xs-2">Actor Id</th>
-                                        <th class="col-xs-3">First Name</th>
-                                        <th class="col-xs-3">Last Name</th>
-                                        <th class="col-xs-2">Movie ID</th>
-                                        <th class="col-xs-2">Role</th>
+                                        <th class="col-xs-3">Movie Id</th>
+                                        <th class="col-xs-5">Title</th>
+                                        <th class="col-xs-2">Year</th>
+                                        <th class="col-xs-2">Rank</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="row in result">
-                                        <td class="col-xs-2"> {{ row.actorID }} </td>
-                                        <td class="col-xs-3"> {{ row.firstName }} </td>
-                                        <td class="col-xs-3"> {{ row.lastName }} </td>
-                                        <td class="col-xs-2"> {{ row.movieID }} </td>
-                                        <td class="col-xs-2"> {{ row.role }} </td>
+                                        <td class="col-xs-3"> {{ row.movieID }} </td>
+                                        <td class="col-xs-5"> {{ row.movieName }} </td>
+                                        <td class="col-xs-2"> {{ row.year }} </td>
+                                        <td class="col-xs-2"> {{ row.rank }} </td>
                                     </tr>
                                 </tbody>
                             </table>
