@@ -1,10 +1,32 @@
 <?php
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * 1genre.php
+ *
+ * Gets the most "popular" genre, as in the one
+ * with the most movies.
+ *
+ * PHP 5
+ *
+ * @category    Project1
+ * @author      Anthony Zheng <Anthony@anthonyzing.me>
+ * @author      Terrence Butler <tbbutle@uga.edu>
+ * @author      Nghia Le <nghiathanle.25@gmail.com>
+ * @since       Created January 22, 2017
+ */
+
+
 include "Common.php";
 
 get1Genre();
 
-/** Gets Genre with the Largest Movie Count */
+/**
+ * get1Genre
+ *
+ * Gets Genre with the Largest Movie Count.
+ */
 function get1Genre() {
 
     $db = connectDB();

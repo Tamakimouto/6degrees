@@ -1,10 +1,31 @@
 <?php
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * 2genre.php
+ *
+ * Ajax return for the actor who has played in the most amount
+ * of movies in a given genre.
+ *
+ * PHP 5
+ *
+ * @category    Project1
+ * @author      Anthony Zheng <Anthony@anthonyzing.me>
+ * @author      Terrence Butler <tbbutle@uga.edu>
+ * @author      Nghia Le <nghiathanle.25@gmail.com>
+ * @since       Created January 22, 2017
+ */
+
 include "Common.php";
 
 get2Genre();
 
-/** Gets actors that have the largest amount of movies from the given genre */
+/**
+ * get2Genre
+ *
+ * Gets actors that have the largest amount of movies from the given genre 
+ */
 function get2Genre() {
 
     $db = connectDB();

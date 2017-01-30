@@ -1,10 +1,31 @@
 <?php
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * 1degree.php
+ *
+ * Get's all films in a 1st degree of separation from Kevin Bacon
+ * with a given actor.
+ *
+ * PHP 5
+ *
+ * @category    Project1
+ * @author      Anthony Zheng <Anthony@anthonyzing.me>
+ * @author      Terrence Butler <tbbutle@uga.edu>
+ * @author      Nghia Le <nghiathanle.25@gmail.com>
+ * @since       Created January 22, 2017
+ */
+
 include "Common.php";
 
 get1Degree();
 
-/** Gets 1st Degree of Separation from Kevin Bacon */
+/**
+ * get1Degree
+ *
+ * Gets 1st Degree of Separation from Kevin Bacon.
+ */
 function get1Degree() {
 
     $db = connectDB();

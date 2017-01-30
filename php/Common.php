@@ -1,6 +1,20 @@
 <?php
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
+/**
+ * Common.php
+ *
+ * The main SQL config file for the project.
+ *
+ * PHP 5
+ *
+ * @category    Project1
+ * @author      Anthony Zheng <Anthony@anthonyzing.me>
+ * @author      Terrence Butler <tbbutle@uga.edu>
+ * @author      Nghia Le <nghiathanle.25@gmail.com>
+ * @since       Created January 22, 2017
+ */
 
 /**
  * connectDB
@@ -31,6 +45,7 @@ function connectDB() {
 
         echo "Connection Error Message: " . $e->getMessage() . "<br/>";
         die();
+
     }
 }
 

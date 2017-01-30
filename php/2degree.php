@@ -1,10 +1,32 @@
 <?php
 
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * 2degree.php
+ *
+ * Gets all movies in a 2nd degree of separation from Kevin Bacon.
+ * Working down to the wire with this query. Hopefully it doesn't
+ * get submitted late.
+ *
+ * PHP 5
+ *
+ * @category    Project1
+ * @author      Anthony Zheng <Anthony@anthonyzing.me>
+ * @author      Terrence Butler <tbbutle@uga.edu>
+ * @author      Nghia Le <nghiathanle.25@gmail.com>
+ * @since       Created January 22, 2017
+ */
+
 include "Common.php";
 
 get2Degree();
 
-/** Gets 2nd Degree of Separation from Kevin Bacon */
+/**
+ * get2Degree
+ *
+ * Gets 2nd Degree of Separation from Kevin Bacon
+ */
 function get2Degree() {
 
     $db = connectDB();
